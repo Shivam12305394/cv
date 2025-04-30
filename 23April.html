@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shivam Mishra | Web Developer</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #6C63FF;
+            --secondary-color: #2F2E41;
+            --accent-color: #FF6584;
+            --light-color: #F8F9FA;
+            --dark-color: #2F2E41;
+            --glow-color: rgba(108, 99, 255, 0.6);
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-color);
+            scroll-behavior: smooth;
+            background-color: #FAFAFA;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        /* Navbar */
+        .navbar {
+            background-color: rgba(47, 46, 65, 0.95);
+            padding: 20px 0;
+            box-shadow: 0 2px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            background-color: rgba(47, 46, 65, 0.98);
+            backdrop-filter: blur(10px);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: white !important;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+        
+        .nav-link {
+            color: white !important;
+            margin: 0 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--secondary-color), #3F3D56);
+            color: white;
+            padding: 150px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
+            top: -100px;
+            left: -100px;
+            z-index: 1;
+            animation: pulse 8s infinite alternate;
+        }
+        
+        .hero:after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
+            bottom: -150px;
+            right: -150px;
+            z-index: 1;
+            animation: pulse 6s infinite alternate-reverse;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(1.2); opacity: 0.3; }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-weight: 700;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        /* Profile Photo with Glow Effect */
+        .profile-container {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            margin: 0 auto;
+        }
+        
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
+            transform: rotate(3deg);
+            transition: all 0.5s ease;
+        }
+        
+        .profile-photo:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+        
+        .photo-frame {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            border: 2px solid var(--primary-color);
+            transform: rotate(-3deg);
+            transition: all 0.5s ease;
+        }
+        
+        .profile-container:hover .photo-frame {
+            transform: rotate(2deg);
+        }
+        
+        .photo-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            background: var(--glow-color);
+            filter: blur(20px);
+            top: 0;
+            left: 0;
+            z-index: 1;
+            opacity: 0.7;
+            animation: glow-pulse 3s infinite alternate;
+        }
+        
+        @keyframes glow-pulse {
+            0% { opacity: 0.5; transform: scale(0.95); }
+            100% { opacity: 0.8; transform: scale(1.05); }
+        }
+        
+        /* Buttons */
+        .btn-primary {
+            background-color: var(--primary-color);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-primary:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn-primary:hover:before {
+            width: 100%;
+        }
+        
+        /* Sections */
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            font-size: 2.5rem;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+        
+        /* About Section */
+        .about-content {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .about-info {
+            margin-bottom: 30px;
+        }
+        
+        .about-info p {
+            margin-bottom: 20px;
+        }
+        
+        .personal-info {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .info-item {
+            flex: 0 0 50%;
+            margin-bottom: 15px;
+        }
+        
+        .info-item strong {
+            display: inline-block;
+            width: 120px;
+            color: var(--secondary-color);
+        }
+        
+        /* Skill Cards */
+        .skill-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .skill-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+        
+        .skill-card:hover:before {
+            height: 100%;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-card:hover .skill-icon {
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .skill-card:hover h4 {
+            color: white;
+        }
+        
+        .skill-card:hover p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Project Cards */
+        .project-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .project-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.7));
+            z-index: 1;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        
+        .project-card:hover:before {
+            opacity: 1;
+        }
+        
+        .project-img {
+            height: 250px;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .project-card:hover .project-img {
+            transform: scale(1.05);
+        }
+        
+        .project-content {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            color: white;
+            z-index: 2;
+            transition: all 0.4s ease;
+        }
+        
+        .project-card:hover .project-content {
+            bottom: 0;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            right: -15px;
+            background-color: white;
+            border: 4px solid var(--primary-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 0 8px rgba(108, 99, 255, 0.2);
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid var(--primary-color);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent white;
+        }
+        
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid var(--primary-color);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent white transparent transparent;
+        }
+        
+        .right::after {
+            left: -12px;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Activities */
+        .activity-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .activity-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        /* Contact Section */
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-info:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-control {
+            height: 50px;
+            border-radius: 10px;
+            border: 1px solid #eee;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-control:focus {
+            box-shadow: none;
+            border-color: var(--primary-color);
+        }
+        
+        textarea.form-control {
+            height: auto;
+            padding-top: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: var(--primary-color);
+            transform: translateY(-5px) scale(1.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 120px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .profile-container {
+                width: 220px;
+                height: 220px;
+                margin-bottom: 30px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::before {
+                left: 60px;
+                border: medium solid var(--primary-color);
+                border-width: 10px 10px 10px 0;
+                border-color: transparent white transparent transparent;
+            }
+            
+            .left::after, .right::after {
+                left: 18px;
+            }
+            
+            .right {
+                left: 0%;
+            }
+            
+            .info-item {
+                flex: 0 0 100%;
+            }
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target=".navbar">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Shivam Mishra</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars" style="color: white;"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#education">Education</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#activities">Activities</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Photo -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 text-center">
+                    <div class="profile-container wow animate_animated animate_fadeIn">
+                        <div class="photo-glow"></div>
+                        <div class="photo-frame"></div>
+                        <!-- Replace with your actual photo -->
+                        <img src="bittu.jpg" 
+                             alt="Shivam Mishra" 
+                             class="profile-photo">
+                    </div>
+                </div>
+                <div class="col-lg-7 hero-content wow animate_animated animate_fadeInRight">
+                    <h1>Shivam Mishra</h1>
+                    <p class="lead">Web Developer & Creative Designer</p>
+                    <p>I am a dedicated web developer with a strong foundation in HTML, CSS, and JavaScript. I'm a quick learner and always eager to stay updated with the latest web development trends.</p>
+                    <div class="mt-4">
+                        <a href="#contact" class="btn btn-primary btn-lg me-3">Hire Me</a>
+                        <a href="#projects" class="btn btn-outline-light btn-lg">My Work</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content wow animate_animated animate_fadeIn">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="about-info">
+                            <h3>Personal Details</h3>
+                            <p>I am a passionate web developer currently pursuing my Bachelor's in Computer Application at Lovely Professional University. I specialize in creating responsive, user-friendly websites using modern web technologies.</p>
+                            <p>With a strong foundation in front-end development, I enjoy turning ideas into beautiful, functional websites. My goal is to build applications that are both visually appealing and highly functional.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="personal-info">
+                            <div class="info-item">
+                                <strong>Name:</strong> Shivam Mishra
+                            </div>
+                            <div class="info-item">
+                                <strong>Email:</strong> mishrashivam65265@gmail.com
+                            </div>
+                            <div class="info-item">
+                                <strong>Phone:</strong> +91 9153361344
+                            </div>
+                            <div class="info-item">
+                                <strong>LinkedIn:</strong> linkedin.com/in/shivam-mishra
+                            </div>
+                            <div class="info-item">
+                                <strong>Education:</strong> BCA (Pursuing)
+                            </div>
+                            <div class="info-item">
+                                <strong>University:</strong> LPU, Phagwara
+                            </div>
+                            <div class="info-item">
+                                <strong>CGPA:</strong> 7.23 (1st Year)
+                            </div>
+                            <div class="info-item">
+                                <strong>Hobbies:</strong> Cricket, Esports
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+            <div class="row">
+                <div class="col-md-3 mb-4 wow animate_animated animate_fadeInUp" data-wow-delay="0.1s">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fab fa-html5"></i>
+                        </div>
+                        <h4>HTML5</h4>
+                        <p>Semantic markup and structure</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4 wow animate_animated animate_fadeInUp" data-wow-delay="0.2s">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fab fa-css3-alt"></i>
+                        </div>
+                        <h4>CSS3</h4>
+                        <p>Styling and animations</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4 wow animate_animated animate_fadeInUp" data-wow-delay="0.3s">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fab fa-js"></i>
+                        </div>
+                        <h4>JavaScript</h4>
+                        <p>Interactive functionality</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4 wow animate_animated animate_fadeInUp" data-wow-delay="0.4s">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h4>MySQL</h4>
+                        <p>Database management</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4 wow animate_animated animate_fadeInUp" data-wow-delay="0.1s">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fab fa-bootstrap"></i>
+                        </div>
+                        <h4>Bootstrap</h4>
+                        <p>Responsive frameworks</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4 wow animate_animated animate_fadeInUp" data-wow-delay="0.2s">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-file-word"></i>
+                        </div>
+                        <h4>MS Office</h4>
+                        <p>Document processing</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4 wow animate_animated animate_fadeInUp" data-wow-delay="0.3s">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h4>C++</h4>
+                        <p>Programming fundamentals</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4 wow animate_animated animate_fadeInUp" data-wow-delay="0.4s">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4>AI Tools</h4>
+                        <p>Basic understanding</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4 wow animate_animated animate_fadeInLeft">
+                    <div class="card project-card">
+                        <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="card-img-top project-img" alt="Car Landing Page">
+                        <div class="project-content">
+                            <h3>Car Landing Page</h3>
+                            <p>Domain: Web Application | Programming language: HTML, CSS, JavaScript</p>
+                            <ul>
+                                <li>Designed the front-end using CSS</li>
+                                <li>Implemented back-end using JavaScript</li>
+                                <li>Ensured user-friendly interaction and responsive design</li>
+                            </ul>
+                            <div class="badges">
+                                <span class="badge bg-primary">HTML</span>
+                                <span class="badge bg-primary">CSS</span>
+                                <span class="badge bg-primary">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4 wow animate_animated animate_fadeInRight">
+                    <div class="card project-card">
+                        <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="card-img-top project-img" alt="City Guide">
+                        <div class="project-content">
+                            <h3>City Guide Website</h3>
+                            <p>Domain: Web Application | Programming language: HTML, CSS</p>
+                            <ul>
+                                <li>Wrote content using HTML about the city</li>
+                                <li>Designed the front-end using CSS</li>
+                                <li>Created an informative guide website</li>
+                            </ul>
+                            <div class="badges">
+                                <span class="badge bg-primary">HTML</span>
+                                <span class="badge bg-primary">CSS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Education & Certifications</h2>
+            <div class="timeline">
+                <div class="timeline-item left wow animate_animated animate_fadeInLeft">
+                    <div class="timeline-content">
+                        <h3>Bachelor's in Computer Application</h3>
+                        <p>Lovely Professional University, Phagwara (Punjab)</p>
+                        <p>2023-2026</p>
+                    </div>
+                </div>
+                <div class="timeline-item right wow animate_animated animate_fadeInRight">
+                    <div class="timeline-content">
+                        <h3>Higher Secondary Education (11th-12th)</h3>
+                        <p>Imperial Public School, Hatwa (Bihar)</p>
+                        <p>2021-2023</p>
+                        <p>CBSE Board - 79%</p>
+                    </div>
+                </div>
+                <div class="timeline-item left wow animate_animated animate_fadeInLeft">
+                    <div class="timeline-content">
+                        <h3>Microsoft Office 365 Certification</h3>
+                        <p>Certified in Microsoft Office applications</p>
+                    </div>
+                </div>
+                <div class="timeline-item right wow animate_animated animate_fadeInRight">
+                    <div class="timeline-content">
+                        <h3>Certificate of AI Tool Webinar</h3>
+                        <p>Participated in AI tools training webinar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section id="activities" class="section">
+        <div class="container">
+            <h2 class="section-title">Extra-Curricular Activities</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4 wow animate_animated animate_fadeInUp">
+                    <div class="activity-card">
+                        <div class="activity-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3>Silver Medal</h3>
+                        <p>State Level Cricket Tournament</p>
+                        <p>Won silver medal representing my state in competitive cricket tournament</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4 wow animate_animated animate_fadeInUp" data-wow-delay="0.2s">
+                    <div class="activity-card">
+                        <div class="activity-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h3>1st Runner Up</h3>
+                        <p>District Esports Tournament</p>
+                        <p>Secured second position in district-level esports competition</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="row">
+                <div class="col-lg-5 mb-5 mb-lg-0 wow animate_animated animate_fadeInLeft">
+                    <div class="contact-info">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h5>Email</h5>
+                            <p>mishrashivam65265@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h5>Phone</h5>
+                            <p>+91 9153361344</p>
+                        </div>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div>
+                            <h5>LinkedIn</h5>
+                            <p><a href="https://www.linkedin.com/in/shivam-mishra/" target="_blank" class="text-decoration-none">linkedin.com/in/shivam-mishra</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 wow animate_animated animate_fadeInRight">
+                    <div class="contact-form">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Your Name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control" placeholder="Your Email" required>
+                                </div>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Subject">
+                            <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-icons mb-4">
+                <a href="https://www.linkedin.com/in/shivam-mishra-909879336/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>&copy; 2025 Shivam Mishra. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0
